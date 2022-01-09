@@ -1,0 +1,24 @@
+---
+title: Blog
+layout: default
+---
+
+{% block content %}
+    <header>
+        <h1 class="text-3xl tracking-tight">
+            {{ title }}
+        </h1>
+        <div class="w-8 inline-block border-b-4 border-indigo-700 pb-4 mb-4 inline-block"></div>
+    </header>
+
+    {%- for post in collections.post -%}
+        <div class="mb-4">
+            <div class="text-sm tracking-wide text-gray-600">
+                {{ post.data.date | formatDate }}
+            </div>
+            <a href="{{ post.url }}" class="text-xl hover:text-indigo-600">
+                {{ post.data.title }}
+            </a>
+        </div>
+    {%- endfor -%}
+{% endblock %}

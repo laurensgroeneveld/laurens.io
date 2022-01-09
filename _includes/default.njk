@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="00908F">
+
+    <title>
+        {{ title }} — Laurens Groeneveld's blog
+    </title>
+    
+    <link rel="stylesheet" href="/site.css?v={% version %}"/>
+
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-gray-100 text-gray-900 pb-16">
+    <div class="mb-8 bg-indigo-800 shadow-inner" style="background: linear-gradient(-30deg, rgba(60,54,107,1) 0%, rgba(67,65,144,1) 50%, rgba(60,54,107,1) 100%);">
+        <div class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between" x-data="{ showMobileNav: false }">
+            <a href="/" class="text-xl hover:text-gray-600"><span class="text-green-200 mr-1 font-medium">Laurens</span><span class="text-indigo-200">Groeneveld</span></a>
+            
+            <svg class="md:hidden w-6 text-indigo-200 cursor-pointer" x-bind:class="{'hidden': showMobileNav}" @click="showMobileNav = true"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            
+            <svg class="hidden w-6 text-indigo-200 cursor-pointer" x-bind:class="{'flex md:hidden': showMobileNav, 'hidden': ! showMobileNav}" @click="showMobileNav = false"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            
+            <nav class="hidden md:flex flex-wrap items-center w-screen md:w-auto pt-6 md:pt-0" x-bind:class="{'flex': showMobileNav, 'hidden': ! showMobileNav}">
+                <a href="/" class="block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 text-indigo-300 hover:text-indigo-100">
+                    Home
+                </a>
+                <a href="/blog" class="block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 text-indigo-300 hover:text-indigo-100">
+                    Blog
+                </a>
+                <a href="/about" class="block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 text-indigo-300 hover:text-indigo-100">
+                    About
+                </a>
+            </nav>
+        </div>
+
+        {% block subnav %}{% endblock %}
+    </div>
+    <div class="max-w-3xl mx-auto px-6">
+        {% block content %}
+            {{ content | safe }}
+        {% endblock %}
+    </div>
+
+    <script src="/js/alpine.js?v={% version %}"></script>
+</body>
+</html>

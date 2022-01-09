@@ -1,0 +1,12 @@
+{% extends "_includes/default.njk" %}
+
+{% block content %}
+    <header>
+        <h1 class="text-3xl tracking-tight">
+            {{ title }}
+        </h1>
+        <div class="w-8 inline-block border-b-4 border-indigo-700 pb-4 mb-4 inline-block"></div>
+    </header>
+
+    {% include 'prose.njk' %}
+{% endblock %}
