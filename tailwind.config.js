@@ -1,6 +1,6 @@
 module.exports = {
     mode: 'jit',
-    content: ['_site/**/*.html'],
+    content: ['dist/**/*.html'],
     variants: {},
     plugins: [
       require('@tailwindcss/typography'),

@@ -1,10 +1,10 @@
 {
-  "name": "laurens.io-eleventy",
+  "name": "laurens.io",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "concurrently \"eleventy --serve\" \"npx tailwindcss -i styles/site.css -c tailwind.config.js -o _site/site.css --watch\"",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production npx tailwindcss -i styles/site.css -c tailwind.config.js -o _site/site.css --minify"
+    "start": "concurrently \"eleventy --serve\" \"npx tailwindcss -i site/styles/site.css -c tailwind.config.js -o dist/site.css --watch\"",
+    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production npx tailwindcss -i site/styles/site.css -c tailwind.config.js -o dist/site.css --minify"
   },
   "keywords": [],
   "author": "Laurens Groeneveld <me@laurens.io>",

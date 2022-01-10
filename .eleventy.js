@@ -17,4 +17,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addNunjucksFilter("formatDate", function(value) {
         return value.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     });
+
+    return {
+        dir: { input: 'site', output: 'dist', includes: '_includes' },
+      };
 };
