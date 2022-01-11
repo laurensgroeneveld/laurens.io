@@ -3,6 +3,8 @@ const now = Date.now().toString();
 module.exports = function (eleventyConfig) {
     eleventyConfig.addWatchTarget('./tailwind.config.js');
 
+    eleventyConfig.addPassthroughCopy("_redirects");
+
     eleventyConfig.addPassthroughCopy({
         './node_modules/alpinejs/dist/cdn.js': './js/alpine.js',
     });
