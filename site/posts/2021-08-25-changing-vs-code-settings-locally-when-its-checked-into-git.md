@@ -1,7 +1,6 @@
 ---
 title: Changing .vscode settings.json locally when it's checked into Git
 date: 2020-08-25
-layout: post
 tags: post
 ---
 Since I often have multiple Visual Studio Code projects open at the same time, I need an easy way to distinguish between them. Luckily there's [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock) by John Papa, which lets you change the window frame color for different workspaces by setting a key in the `.vscode/settings.json`. Perfect!
