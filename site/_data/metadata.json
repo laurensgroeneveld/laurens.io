@@ -1,0 +1,14 @@
+{
+    "title": "Laurens Groeneveld's blog",
+    "description": "On this site you'll find things I share about my work as a web developer. Plus the occasional random historical fact.",
+    "url": "https://laurens.io/",
+    "feed": {
+        "xmlUrl": "https://laurens.io/feed.xml",
+        "jsonUrl": "https://laurens.io/feed.json"
+    },
+    "author": {
+        "name": "Laurens Groeneveld",
+        "email": "me@laurens.io",
+        "url": "https://laurens.io/about/"
+    }
+}
