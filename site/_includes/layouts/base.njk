@@ -5,14 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="00908F">
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="author" content="Laurens Groeneveld" />
 
     <title>
-        {{ title }} — Laurens Groeneveld's blog
+        {{ title }} — {{ metadata.title }}
     </title>
     
     <link rel="stylesheet" href="/site.css?v={% version %}"/>
 
-    {% block head %}{% endblock %}
+    <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed.json" type="application/json" title="{{ metadata.title }}">
+    <link rel="me" type="text/html" href="https://twitter.com/laurensgroenev" />
 </head>
 <body class="bg-gray-100 text-gray-900 pb-16">
     <div class="mb-8 bg-indigo-800 shadow-inner" style="background: linear-gradient(-30deg, rgba(60,54,107,1) 0%, rgba(67,65,144,1) 50%, rgba(60,54,107,1) 100%);">
