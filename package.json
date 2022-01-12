@@ -10,7 +10,7 @@
   "author": "Laurens Groeneveld <me@laurens.io>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy": "^1.0",
     "@tailwindcss/typography": "^0.5.0",
     "alpinejs": "^3.7.1",
     "concurrently": "^7.0.0",
