@@ -1,0 +1,10 @@
+{%- for post in collections.posts | reverse -%}
+        <div class="mb-4">
+            <div class="text-sm tracking-wide text-gray-600 dark:text-gray-400">
+                {{ post.data.date | formatDate }}
+            </div>
+            <a href="{{ post.url }}" class="text-xl hover:text-indigo-600 dark:hover:text-indigo-300">
+                {{ post.data.title }}
+            </a>
+        </div>
+{%- endfor -%}

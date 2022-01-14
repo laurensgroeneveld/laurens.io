@@ -2,13 +2,13 @@
 
 {% block content %}
     <article class="mb-16">
-        <div class="text-sm tracking-wide text-gray-600 mb-1">
+        <div class="text-sm tracking-wide text-gray-600 dark:text-gray-400 mb-1">
             {{ date | formatDate }}
         </div>
         <h1 class="text-3xl tracking-tight">
             {{ title }}
         </h1>
-        <div class="w-8 inline-block border-b-4 border-indigo-700 pb-4 mb-4"></div>
+        <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
 
         {% include 'prose.njk' %}
     </article>
