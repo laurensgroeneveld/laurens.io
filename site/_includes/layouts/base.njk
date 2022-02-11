@@ -47,6 +47,8 @@
                 <a href="/about" class="block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 hover:text-indigo-100 {{ 'text-indigo-100' if page.url == '/about/' else 'text-indigo-300'}}">
                     About
                 </a>
+
+               {% include 'themeToggle.njk' %}
             </nav>
         </div>
 
@@ -58,6 +60,7 @@
         {% endblock %}
     </div>
 
-    <script src="/js/alpine.js?v={% version %}"></script>
+    <script src="/js/theme.js?v={% version %}"></script>
+    <script defer src="/js/alpine.js?v={% version %}"></script>
 </body>
 </html>

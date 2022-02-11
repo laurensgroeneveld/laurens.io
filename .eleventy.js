@@ -12,6 +12,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({
         './node_modules/alpinejs/dist/cdn.min.js': './js/alpine.js',
     });
+    eleventyConfig.addPassthroughCopy({
+        './site/scripts/theme.js': './js/theme.js',
+    });
 
     eleventyConfig.addShortcode('version', function () {
         return now;

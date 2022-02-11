@@ -1,0 +1,78 @@
+ <div class="pl-6 border-l border-indigo-700 flex items-center" x-data="{ dropdownOpen: false }">
+    <div class="relative inline-block text-left">
+        <div>
+            <button
+                type="button"
+                class="rounded-full flex items-center text-indigo-300 hover:text-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                id="menu-button"
+                aria-expanded="true"
+                aria-haspopup="true"
+                @click="dropdownOpen = !dropdownOpen"
+                @click.away="dropdownOpen = false"
+                @keydown.escape.prevent.stop="dropdownOpen = false"
+            >
+                <span class="sr-only">Open options</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-show="$store.theme.prefersDarkMode()">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-show="!$store.theme.prefersDarkMode()">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+        </div>
+
+        <div
+            class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+            x-show="dropdownOpen"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+        >
+            <div class="py-1" role="none">
+            <button
+                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'light', 'text-indigo-700': $store.theme.currentTheme === 'light'}"
+                role="menuitem"
+                tabindex="-1"
+                @click="$store.theme.set('light'); dropdownOpen = false"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+                </svg>
+                Light
+            </button>
+            <button
+                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'dark', 'text-indigo-700': $store.theme.currentTheme === 'dark'}"
+                role="menuitem"
+                tabindex="-1"
+                @click="$store.theme.set('dark'); dropdownOpen = false"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+                Dark
+            </button>
+            <button
+                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'system', 'text-indigo-700': $store.theme.currentTheme === 'system'}"
+                role="menuitem"
+                tabindex="-1"
+                @click="$store.theme.set('system'); dropdownOpen = false"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
+                </svg>
+                System
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
