@@ -1,6 +1,6 @@
 ---
 title: Using different files between environments with dotenv
-description: 
+description: Using multiple environment files is discouraged but possible in the dotenv library
 date: 2022-09-08
 ---
 
