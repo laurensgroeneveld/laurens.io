@@ -3,9 +3,9 @@ title: About
 layout: page
 ---
 
-Hi there! I'm Laurens, a web developer from the Netherlands. Currently I'm working for Infi in the lovely city of Utrecht. At Infi we build web applications and apps for a wide range of clients. For each project we choose the stack that we think works best.
+Hi there! I'm Laurens, a web developer from the Netherlands. As one of the fabled full stack developers I work in both frontend and backend, although I like building frontends the most. Currently I love to work with Vue and [Tailwind](https://tailwindcss.com). 
 
-That means I work in both frontend and backend, although I like building frontends the most. Currently I love to work Vue and [Tailwind](https://tailwindcss.com). When I'm not coding, I like to read sci-fi, play historic strategy games, or pet my cat.
+On this site, you'll find things I share about my work, and possibly my other interests: when I'm not coding, I like reading sci-fi, and playing strategy games - both digital and physical.
 
 <div class="not-prose">
     <h2 class="text-xl mb-2">
