@@ -1,11 +1,14 @@
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const directoryOutputPlugin = require("@11ty/eleventy-plugin-directory-output");
+const rssPlugin = require("@11ty/eleventy-plugin-rss");
+const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const now = Date.now().toString();
 
 module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.setQuietMode(true);
+    eleventyConfig.addPlugin(directoryOutputPlugin);
+    eleventyConfig.addPlugin(rssPlugin);
+    eleventyConfig.addPlugin(syntaxHighlightPlugin);
 
     eleventyConfig.addWatchTarget('./tailwind.config.js');
 

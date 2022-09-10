@@ -19,5 +19,8 @@
     "concurrently": "^7.4.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-directory-output": "^1.0.1"
   }
 }
