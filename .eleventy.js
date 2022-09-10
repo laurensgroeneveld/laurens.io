@@ -1,9 +1,11 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 const now = Date.now().toString();
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginRss);
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     eleventyConfig.addWatchTarget('./tailwind.config.js');
 
@@ -14,6 +16,9 @@ module.exports = function (eleventyConfig) {
     });
     eleventyConfig.addPassthroughCopy({
         './site/scripts/theme.js': './js/theme.js',
+    });
+    eleventyConfig.addPassthroughCopy({
+        './site/styles/prism-theme.css': './css/prism-theme.css',
     });
 
     eleventyConfig.addShortcode('version', function () {
