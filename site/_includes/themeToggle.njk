@@ -3,7 +3,7 @@
         <div>
             <button
                 type="button"
-                class="rounded-full flex items-center text-indigo-300 hover:text-indigo-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                class="rounded-full flex items-center text-gray-500 hover:text-gray-800 dark:hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                 id="menu-button"
                 aria-expanded="true"
                 aria-haspopup="true"
@@ -23,7 +23,7 @@
 
         <div
             x-cloak
-            class="origin-top-left absolute left-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none md:left-auto md:right-0 md:origin-top-right"
+            class="origin-top-left absolute left-0 mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-gray-600 ring-1 ring-black ring-opacity-5 focus:outline-none md:left-auto md:right-0 md:origin-top-right"
             x-show="dropdownOpen"
             x-transition:enter="transition ease-out duration-100"
             x-transition:enter-start="transform opacity-0 scale-95"
@@ -38,8 +38,8 @@
         >
             <div class="py-1" role="none">
             <button
-                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
-                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'light', 'text-indigo-700': $store.theme.currentTheme === 'light'}"
+                class="w-full text-gray-700 dark:text-gray-200 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'light', 'text-indigo-700 dark:text-indigo-300': $store.theme.currentTheme === 'light'}"
                 role="menuitem"
                 tabindex="-1"
                 x-on:click="$store.theme.set('light'); dropdownOpen = false"
@@ -50,8 +50,8 @@
                 Light
             </button>
             <button
-                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
-                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'dark', 'text-indigo-700': $store.theme.currentTheme === 'dark'}"
+                class="w-full text-gray-700 dark:text-gray-200 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'dark', 'text-indigo-700 dark:text-indigo-300': $store.theme.currentTheme === 'dark'}"
                 role="menuitem"
                 tabindex="-1"
                 x-on:click="$store.theme.set('dark'); dropdownOpen = false"
@@ -62,8 +62,8 @@
                 Dark
             </button>
             <button
-                class="w-full text-gray-700 px-4 py-2 text-sm flex items-center hover:bg-gray-100"
-                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'system', 'text-indigo-700': $store.theme.currentTheme === 'system'}"
+                class="w-full text-gray-700 dark:text-gray-200 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                x-bind:class="{'text-gray-700': $store.theme.currentTheme !== 'system', 'text-indigo-700 dark:text-indigo-300': $store.theme.currentTheme === 'system'}"
                 role="menuitem"
                 tabindex="-1"
                 x-on:click="$store.theme.set('system'); dropdownOpen = false"
