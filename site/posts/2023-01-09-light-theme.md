@@ -1,10 +1,15 @@
 ---
 title: Why to use a light theme
 description: It might not be such a bad idea as you'd think.
-date: 2022-09-10
+date: 2023-01-09
 ---
 
-When I started as a developer, I was an avid proponent of dark themes. Especially in a code editor I made an effort to use a dark theme if the app didn't have it out of the box. Even my phone I set to use dark mode everywhere. A few years back however, I made a radical switch to light themes, and never looked back. Nowadays I barely tolerate a dark theme, especially in light environments. Since the default for most developers is still to use a dark theme, I though I'd write a quick post on why I switched and why I think you should try it, too.
+One of the things that will rile up most developers like nothing else is the use of a light theme. Even in the tabs versus spaces debate there seem to be people arguing for both sides, but with a dark theme the default in most modern code editors, this particular battle seems already lost. Still, I switched some years ago and never looked back. Here's why you should try a light theme too.
+
+<figure>
+    <img alt="" src="/images/discord-light-theme.png" class="block max-w-[500px]">
+    <figcaption>Although Discord later <a href="https://discord.com/blog/light-theme-redeemed" target="_blank" rel="noopener noreferrer">recanted</a>.</figcaption>
+</figure>
 
 When I try to convince people they should try a light theme, I usually link to [this blogpost](https://stitcher.io/blog/why-light-themes-are-better-according-to-science) by Brent Roose. In it he very succintly summarizes some scientific evidence for why a light theme is better. If you want a more in-depth look I recommend [this article](https://www.nngroup.com/articles/dark-mode/) by the Nielsen Norman Group. I have to say I was a bit sceptical about this, as from my personal experience a dark theme felt easier on the eyes. But the call to action at the end of Brent's article was a game changer for me:
 

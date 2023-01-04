@@ -14,6 +14,8 @@ module.exports = function (eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy("_redirects");
 
+    eleventyConfig.addPassthroughCopy("./site/images/");
+
     eleventyConfig.addPassthroughCopy({
         './node_modules/alpinejs/dist/cdn.min.js': './js/alpine.js',
     });
