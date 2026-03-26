@@ -11,14 +11,14 @@
   "author": "Laurens Groeneveld <me@laurens.io>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-plugin-directory-output": "^1.0.1",
-    "@11ty/eleventy-plugin-rss": "^2.0.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@tailwindcss/typography": "^0.5.15",
-    "alpinejs": "^3.14.8",
-    "concurrently": "^9.1.1",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-plugin-directory-output": "^1.0.2",
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "alpinejs": "^3.15.8",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19"
   }
 }
