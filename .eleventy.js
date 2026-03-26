@@ -10,8 +10,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(rssPlugin);
     eleventyConfig.addPlugin(syntaxHighlightPlugin);
 
-    eleventyConfig.addWatchTarget('./tailwind.config.js');
-
     eleventyConfig.addPassthroughCopy("_redirects");
 
     eleventyConfig.addPassthroughCopy("./site/images/");

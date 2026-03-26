@@ -13,7 +13,7 @@
     </title>
 
     <meta name="generator" content="{{ eleventy.generator }}">
-    
+
     <link rel="stylesheet" href="/site.css?v={% version %}"/>
     <link rel="stylesheet" href="/css/prism-theme.css?v={% version %}"/>
 
@@ -24,8 +24,8 @@
 <body class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 pb-16">
     <div class="mb-8 bg-gray-200 dark:bg-gray-800">
         <div class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between" x-data="{ showMobileNav: false }">
-            <a href="/" class="text-xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">Laurens Groeneveld</span></a>
-            
+            <a href="/" class="text-xl font-medium text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">Laurens Groeneveld</a>
+
             <svg class="md:hidden w-6 text-gray-600 cursor-pointer" x-bind:class="{'hidden': showMobileNav}" x-on:click="showMobileNav = true"
                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -33,13 +33,13 @@
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
-            
+
             <svg class="hidden w-6 text-gray-600 cursor-pointer" x-bind:class="{'flex md:hidden': showMobileNav, 'hidden': ! showMobileNav}" x-on:click="showMobileNav = false"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
-            
+
             <nav class="hidden md:flex flex-wrap items-center w-screen md:w-auto pt-6 md:pt-0" x-bind:class="{'flex': showMobileNav, 'hidden': ! showMobileNav}" aria-label="Site navigation">
                 <a href="/" class="block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 hover:text-indigo-600 dark:hover:text-indigo-300 {{ 'text-indigo-600 dark:text-indigo-300' if page.url == '/' else 'text-gray-600 dark:text-gray-400'}}" {{ 'aria-current=page' if page.url == '/' }}>
                     Home
