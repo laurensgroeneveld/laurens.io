@@ -1,0 +1,5 @@
+{
+    "layout": "post.njk",
+    "permalink": "til/{{ page.fileSlug }}/",
+    "tags": "learnings"
+}

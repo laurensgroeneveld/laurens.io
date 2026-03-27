@@ -1,19 +1,31 @@
 {% extends "./base.njk" %}
 
 {% block content %}
-    <article class="mb-16">
+    <article>
         <div class="text-sm tracking-wide text-gray-600 dark:text-gray-400 mb-1">
             {{ date | formatDate }}
         </div>
+
         <h1 class="text-3xl tracking-tight">
             {{ title }}
         </h1>
+
         <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
 
         {% include 'prose.njk' %}
     </article>
 
-    <footer class="block p-6 rounded-md shadow-md bg-white dark:bg-gray-800">
+        {%- if source -%}
+            <a href="{{ source }}" class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-50 flex items-center gap-1 underline mt-2" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                    <path fill-rule="evenodd" d="M8.914 6.025a.75.75 0 0 1 1.06 0 3.5 3.5 0 0 1 0 4.95l-2 2a3.5 3.5 0 0 1-5.396-4.402.75.75 0 0 1 1.251.827 2 2 0 0 0 3.085 2.514l2-2a2 2 0 0 0 0-2.828.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M7.086 9.975a.75.75 0 0 1-1.06 0 3.5 3.5 0 0 1 0-4.95l2-2a3.5 3.5 0 0 1 5.396 4.402.75.75 0 0 1-1.251-.827 2 2 0 0 0-3.085-2.514l-2 2a2 2 0 0 0 0 2.828.75.75 0 0 1 0 1.06Z" clip-rule="evenodd" />
+                </svg>
+                Source
+            </a>
+        {%- endif -%}
+
+    <footer class="block p-6 rounded-md shadow-md bg-white dark:bg-gray-800 mt-10">
         <h2 class="text-lg mb-2 text-purple-700 dark:text-purple-400">About Me</h2>
         <p class="text-gray-700 dark:text-gray-200 mb-4">
             I'm Laurens, a web developer from the Netherlands. On this site you'll find things I share about my work. Plus the occasional random historical fact.
