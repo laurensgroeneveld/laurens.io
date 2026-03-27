@@ -3,7 +3,7 @@ title: About
 layout: page
 ---
 
-Hi there! I'm Laurens, a web developer from the Netherlands. As one of the fabled full stack developers I work in both frontend and backend, although I like building frontends the most. Currently I love to work with Vue and [Tailwind](https://tailwindcss.com). 
+Hi there! I'm Laurens, a web developer from the Netherlands. As one of the fabled full stack developers I work in both frontend and backend, although I like building frontends the most.
 
 On this site, you'll find things I share about my work, and possibly my other interests: when I'm not coding, I like reading sci-fi, and playing strategy games - both digital and physical.
 
