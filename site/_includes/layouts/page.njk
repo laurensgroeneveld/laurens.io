@@ -5,6 +5,11 @@
         <h1 class="text-3xl tracking-tight">
             {{ title }}
         </h1>
+
+        {%- if subtitle -%}
+            <div class="mt-1 text-gray-700 text-lg">{{ subtitle }}</div>
+        {%- endif -%}
+
         <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
     </header>
 
