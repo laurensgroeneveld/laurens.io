@@ -13,7 +13,7 @@ One of the things that will rile up most developers like nothing else is the use
 
 When I try to convince people they should try a light theme, I usually link to [this blog post](https://stitcher.io/blog/why-light-themes-are-better-according-to-science) by Brent Roose. In it he very succinctly summarizes some scientific evidence for why a light theme is better. If you want a more in-depth look I recommend [this article](https://www.nngroup.com/articles/dark-mode/) by the Nielsen Norman Group.
 
-I read this, but before I switched myself I was pretty skeptical, as from my personal experience a dark theme felt easier on the eyes. But I'll repeat the call to action at the end of Brent's blog post:
+I read this, but before I switched myself I was pretty sceptical, as from my personal experience a dark theme felt easier on the eyes. But I'll repeat the call to action at the end of Brent's blog post:
 
 > Over the past three years, I've put light themes to the test: I've challenged myself and dozens of others to switch to a light theme for one week. I wanna do the same with you: try it for one week
 
