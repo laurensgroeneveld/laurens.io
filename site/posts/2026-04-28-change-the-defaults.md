@@ -1,6 +1,6 @@
 ---
 title: Change the defaults
-description: 
+description: Don't be beholden by whatever defaults were chosen for you. Make that mouse pointer big!
 date: 2026-04-28
 ---
 
