@@ -1,0 +1,16 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/changing-vs-code-settings-locally-when-its-checked-into-git/"
+  to = "/blog/changing-vs-code-settings-locally-when-its-checked-into-git/"
+  status = 301
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

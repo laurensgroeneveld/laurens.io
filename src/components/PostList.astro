@@ -1,0 +1,17 @@
+---
+import { getPosts } from '@/utils/content';
+import { formatDate } from '@/utils/date';
+
+const posts = await getPosts();
+---
+
+{posts.map((post) => (
+    <div class="mb-4">
+        <div class="text-sm tracking-wide text-gray-600 dark:text-gray-400">
+            {formatDate(post.data.date)}
+        </div>
+        <a href={`/blog/${post.id}/`} class="text-xl hover:text-indigo-600 dark:hover:text-indigo-300">
+            {post.data.title}
+        </a>
+    </div>
+))}

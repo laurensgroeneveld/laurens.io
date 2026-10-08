@@ -1,5 +1,5 @@
 # laurens.io
-The personal website of Laurens Groeneveld, built with [Eleventy](https://11ty.dev).
+The personal website of Laurens Groeneveld, built with [Astro](https://astro.build).
 
 ## Running locally
 Install dependencies
@@ -11,7 +11,7 @@ Start a local development server with
 ```sh
 pnpm start
 ```
-This will open a live reloading version of the website at localhost:8080.
+This will start a live reloading version of the website at localhost:4321.
 
 Build the website for production using
 ```sh
