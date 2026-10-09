@@ -19,4 +19,8 @@ pnpm build
 ```
 
 ## License
-The website and its content are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+The code of this website is licensed under the [MIT License](LICENSE).
+
+The content in the `src/content/` and `src/assets/images/` folders is licensed under [CC BY-SA 4.0](LICENSE-CONTENT).
+
+The brand icons in `src/assets/icons/` are trademarks of their respective owners.
