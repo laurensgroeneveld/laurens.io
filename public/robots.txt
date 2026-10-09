@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://laurens.io/sitemap-index.xml
