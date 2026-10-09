@@ -1,0 +1,33 @@
+---
+import { render } from 'astro:content';
+import LinkIcon from 'heroicons/16/solid/link.svg';
+import Page from '@/layouts/Page.astro';
+import { getLearnings } from '@/utils/content';
+import { formatDate } from '@/utils/date';
+
+const learnings = await getLearnings();
+const rendered = await Promise.all(
+    learnings.map(async (learning) => ({ learning, Content: (await render(learning)).Content })),
+);
+---
+
+<Page title="TIL" subtitle="💡 Quick notes on things I learned today">
+    {rendered.map(({ learning, Content }) => (
+        <div class="mb-4">
+            <a href={`/til/${learning.id}/`} class="text-sm tracking-wide text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-300 no-underline">
+                {formatDate(learning.data.date)}
+            </a>
+            <div class="text-xl flex items-center gap-2">
+                {learning.data.title}
+                {learning.data.source && (
+                    <a href={learning.data.source} class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-50" title="Source" target="_blank">
+                        <LinkIcon class="size-4" />
+                    </a>
+                )}
+            </div>
+            <div class="-mt-4 text-sm text-gray-600 dark:text-gray-300">
+                <Content />
+            </div>
+        </div>
+    ))}
+</Page>

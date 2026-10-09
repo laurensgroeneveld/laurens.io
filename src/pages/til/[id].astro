@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import Post from '@/layouts/Post.astro';
+
+export async function getStaticPaths() {
+    const learnings = await getCollection('learnings');
+
+    return learnings.map((learning) => ({
+        params: { id: learning.id },
+        props: { learning },
+    }));
+}
+
+const { learning } = Astro.props;
+const { Content } = await render(learning);
+---
+
+<Post {...learning.data}>
+    <Content />
+</Post>

@@ -1,0 +1,104 @@
+---
+import '@/styles/site.css';
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import MenuIcon from 'heroicons/24/outline/bars-3.svg';
+import CloseIcon from 'heroicons/24/outline/x-mark.svg';
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+
+const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/blog/', label: 'Blog' },
+    { href: '/til/', label: 'TIL' },
+    { href: '/about/', label: 'About' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00908F">
+    <meta name="description" content={description}>
+    <meta name="author" content="Laurens Groeneveld" />
+
+    <title>{title} — {SITE_TITLE}</title>
+
+    <meta name="generator" content={Astro.generator}>
+
+    <link rel="sitemap" href="/sitemap-index.xml">
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title={SITE_TITLE}>
+    <link rel="me" type="text/html" href="https://twitter.com/laurensgroenev" />
+
+    <script is:inline>
+        function applyTheme() {
+            const theme = localStorage.theme ?? 'system';
+            const prefersDark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+
+            document.documentElement.classList.toggle('dark', prefersDark);
+        }
+
+        applyTheme();
+    </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 pb-16">
+    <div class="mb-8 bg-gray-200 dark:bg-gray-800">
+        <div class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between">
+            <a href="/" class="text-xl font-medium text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">Laurens Groeneveld</a>
+
+            <button type="button" id="nav-toggle" class="peer group md:hidden text-gray-600 cursor-pointer" aria-expanded="false" aria-controls="site-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <MenuIcon class="w-6 group-aria-expanded:hidden" />
+                <CloseIcon class="w-6 hidden group-aria-expanded:block" />
+            </button>
+
+            <nav id="site-nav" class="hidden md:flex peer-aria-expanded:flex flex-wrap items-center w-screen md:w-auto pt-6 md:pt-0" aria-label="Site navigation">
+                {navItems.map(({ href, label }) => {
+                    const isCurrent = Astro.url.pathname === href;
+                    return (
+                        <a
+                            href={href}
+                            class:list={[
+                                'block md:inline-block w-full md:w-auto md:px-3 mr-3 mb-4 md:mb-0 hover:text-indigo-600 dark:hover:text-indigo-300',
+                                isCurrent ? 'text-indigo-600 dark:text-indigo-300' : 'text-gray-600 dark:text-gray-400',
+                            ]}
+                            aria-current={isCurrent ? 'page' : undefined}
+                        >
+                            {label}
+                        </a>
+                    );
+                })}
+
+                <div class="md:pl-6 md:border-l border-gray-400">
+                    <ThemeToggle />
+                </div>
+            </nav>
+        </div>
+
+        <slot name="subnav" />
+    </div>
+    <div class="max-w-3xl mx-auto px-6">
+        <slot />
+
+        <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center">
+            &copy; Laurens Groeneveld - Content licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer" class="underline">CC BY-SA 4.0</a>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('nav-toggle')!;
+
+        toggle.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+---
+import ComputerIcon from 'heroicons/20/solid/computer-desktop.svg';
+import MoonSolidIcon from 'heroicons/20/solid/moon.svg';
+import SunSolidIcon from 'heroicons/20/solid/sun.svg';
+import MoonIcon from 'heroicons/24/outline/moon.svg';
+import SunIcon from 'heroicons/24/outline/sun.svg';
+---
+
+<div class="flex items-center">
+    <div class="relative inline-block text-left">
+        <div>
+            <button
+                type="button"
+                class="rounded-full flex items-center text-gray-500 hover:text-gray-800 dark:hover:text-gray-300 focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                id="menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="theme-menu"
+            >
+                <span class="sr-only">Open options</span>
+                <MoonIcon class="h-6 w-6 hidden dark:block" />
+                <SunIcon class="h-6 w-6 dark:hidden" />
+            </button>
+        </div>
+
+        <div
+            id="theme-menu"
+            inert
+            class="transition ease-out duration-100 inert:opacity-0 inert:scale-95 origin-top-left absolute left-0 mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-gray-600 ring-1 ring-gray-300 dark:ring-gray-500 ring-opacity-5 focus:outline-hidden md:left-auto md:right-0 md:origin-top-right"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="menu-button"
+            tabindex="-1"
+        >
+            <div class="py-1" role="none">
+            <button
+                class="w-full text-gray-700 dark:text-gray-200 aria-checked:text-indigo-700 dark:aria-checked:text-indigo-300 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                role="menuitemradio"
+                aria-checked="false"
+                tabindex="-1"
+                data-theme="light"
+            >
+                <SunSolidIcon class="h-5 w-5 mr-2" />
+                Light
+            </button>
+            <button
+                class="w-full text-gray-700 dark:text-gray-200 aria-checked:text-indigo-700 dark:aria-checked:text-indigo-300 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                role="menuitemradio"
+                aria-checked="false"
+                tabindex="-1"
+                data-theme="dark"
+            >
+                <MoonSolidIcon class="h-5 w-5 mr-2" />
+                Dark
+            </button>
+            <button
+                class="w-full text-gray-700 dark:text-gray-200 aria-checked:text-indigo-700 dark:aria-checked:text-indigo-300 px-4 py-2 text-sm flex items-center hover:bg-gray-100 dark:hover:bg-gray-700"
+                role="menuitemradio"
+                aria-checked="false"
+                tabindex="-1"
+                data-theme="system"
+            >
+                <ComputerIcon class="h-5 w-5 mr-2" />
+                System
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    declare function applyTheme(): void;
+
+    const button = document.getElementById('menu-button')!;
+    const menu = document.getElementById('theme-menu')!;
+    const items = menu.querySelectorAll<HTMLElement>('[data-theme]');
+
+    function setOpen(open: boolean) {
+        menu.inert = !open;
+        button.setAttribute('aria-expanded', String(open));
+    }
+
+    function markCurrent() {
+        const current = localStorage.theme ?? 'system';
+
+        items.forEach((item) => item.setAttribute('aria-checked', String(item.dataset.theme === current)));
+    }
+
+    button.addEventListener('click', () => setOpen(menu.inert));
+
+    document.addEventListener('click', (event) => {
+        if (!button.contains(event.target as Node)) {
+            setOpen(false);
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    });
+
+    items.forEach((item) => {
+        item.addEventListener('click', () => {
+            localStorage.theme = item.dataset.theme;
+            applyTheme();
+            markCurrent();
+        });
+    });
+
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+
+    markCurrent();
+</script>

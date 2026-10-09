@@ -1,0 +1,36 @@
+---
+import Page from '@/layouts/Page.astro';
+import { socials } from '@/socials';
+---
+
+<Page title="About">
+    <p>Hi there! I'm Laurens, a web developer from the Netherlands. As one of the fabled full stack developers I work in both frontend and backend, although I like building frontends the most.</p>
+
+    <p>On this site, you'll find things I share about my work, and possibly my other interests: when I'm not coding, I like reading sci-fi, and playing strategy games - both digital and physical.</p>
+
+    <div class="not-prose">
+        <h2 class="text-xl mb-2">
+            Contact
+        </h2>
+        <p class="mb-4">
+            You can find me on other platforms, or send me an email.
+        </p>
+        {socials.map(({ href, text, Icon }) => {
+            const isExternal = !href.startsWith('mailto:');
+
+            return (
+                <p class="flex items-center mb-4 space-x-3">
+                    <Icon class="w-5 h-5 fill-gray-700 dark:fill-gray-200" />
+                    <a
+                        href={href}
+                        target={isExternal ? '_blank' : undefined}
+                        rel={isExternal ? 'noopener noreferrer me' : undefined}
+                        class="text-indigo-700 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-100"
+                    >
+                        {text}
+                    </a>
+                </p>
+            );
+        })}
+    </div>
+</Page>

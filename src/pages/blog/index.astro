@@ -1,0 +1,23 @@
+---
+import Base from '@/layouts/Base.astro';
+import PostList from '@/components/PostList.astro';
+import RssIcon from 'heroicons/20/solid/rss.svg';
+
+const title = 'Blog';
+---
+
+<Base title={title}>
+    <header>
+        <div class="flex items-center justify-between">
+            <h1 class="text-3xl tracking-tight">
+                {title}
+            </h1>
+            <a href="/feed.xml" class="text-gray-400 hover:text-indigo-600 dark:text-gray-500 dark:hover:text-indigo-300" title="RSS feed">
+                <RssIcon class="h-5 w-5" />
+            </a>
+        </div>
+        <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
+    </header>
+
+    <PostList />
+</Base>

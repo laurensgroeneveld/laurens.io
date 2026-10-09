@@ -1,23 +1,34 @@
 {
   "name": "laurens.io",
   "private": true,
+  "type": "module",
   "description": "Personal website and blog of Laurens Groeneveld",
   "scripts": {
-    "start": "concurrently \"eleventy --serve\" \"npx @tailwindcss/cli -i site/styles/site.css -o dist/site.css --watch\"",
-    "build": "ELEVENTY_PRODUCTION=true eleventy & NODE_ENV=production npx @tailwindcss/cli -i site/styles/site.css -o dist/site.css --minify"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
   },
   "keywords": [],
   "author": "Laurens Groeneveld <me@laurens.io>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.5",
-    "@11ty/eleventy-plugin-directory-output": "^1.0.2",
-    "@11ty/eleventy-plugin-rss": "^2.0.4",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/mdx": "^8.0.3",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/typography": "^0.5.19",
-    "alpinejs": "^3.15.8",
-    "concurrently": "^9.2.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.7",
+    "heroicons": "^2.2.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.2.2",
-    "@tailwindcss/cli": "^4.2.2"
+    "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

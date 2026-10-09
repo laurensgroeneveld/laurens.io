@@ -1,0 +1,23 @@
+---
+import Base from '@/layouts/Base.astro';
+import PostList from '@/components/PostList.astro';
+import SocialLinks from '@/components/SocialLinks.astro';
+---
+
+<Base title="Home">
+    <div slot="subnav" class="max-w-3xl mx-auto px-6 pb-16 pt-8">
+        <h1 class="text-3xl mb-6">Hi, I'm Laurens 👋</h1>
+        <p class="text-xl mb-4">
+            I'm a web developer from the Netherlands. On this site you'll mainly find things I share about my work. Plus the occasional random historical fact.
+        </p>
+        <p class="mb-8">
+            <a href="/about/" class="hover:text-indigo-700 dark:hover:text-indigo-300 underline">More about me</a>
+        </p>
+        <SocialLinks />
+    </div>
+
+    <h2 class="text-2xl text-gray-800 dark:text-gray-200">Latest posts</h2>
+    <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
+
+    <PostList />
+</Base>

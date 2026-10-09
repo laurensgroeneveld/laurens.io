@@ -1,0 +1,14 @@
+---
+import { socials } from '@/socials';
+---
+
+<p class="flex items-center">
+    <span class="mr-4">Find me here:</span>
+    <span class="flex items-center space-x-4">
+        {socials.map(({ title, href, Icon }) => (
+            <a href={href} target="_blank" rel="noopener noreferrer me" title={title}>
+                <Icon class="w-6 h-6 fill-gray-700 hover:fill-purple-700 dark:fill-gray-200 dark:hover:fill-purple-400" />
+            </a>
+        ))}
+    </span>
+</p>
