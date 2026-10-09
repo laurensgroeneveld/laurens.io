@@ -4,6 +4,10 @@ description: Don't be beholden by whatever defaults were chosen for you. Make th
 date: 2026-04-28
 ---
 
+import Figure from '@/components/Figure.astro';
+import bigPointer from '@/assets/images/bigpointer.png';
+import editor from '@/assets/images/light-theme-editor.jpg';
+
 Most software comes with sensible defaults out-of-the-box. Generally those were chosen so that the average user can immediately start using the software, without lengthy configurations. But what if you're not an average user, and the defaults don't cut it? Or what if the default is [just plain wrong](/blog/light-theme/)? Then it's time to change the defaults, and not to be beholden by whatever was chosen by the developer at one point.
 
 ## My customizations
@@ -12,10 +16,7 @@ I'll list a few things that I change in my OS and software, some of which might 
 ### Big mouse pointer
 One of the first things most people remark on when they look at my screen. This was inspired by [this tweet](https://x.com/shanselman/status/1351315661880872962) from Scott Hanselman. In his words, "this is not about being old, this is about being awesome."
 
-<figure>
-    <img alt="A big mouse pointer" src="/images/bigpointer.png" class="block w-25">
-    <figcaption>Yes, this is the actual size.</figcaption>
-</figure>
+<Figure src={bigPointer} alt="A big mouse pointer" class="w-25">Yes, this is the actual size.</Figure>
 
 ### Light theme
 Another contentious one. I've written [a blog post](/blog/light-theme/) about it. It's anecdotally and scientifically better!
@@ -28,10 +29,7 @@ In my code editor I try to keep things as clean as possible. That means
 - Move the sidebar to the right so it doesn't push the code around when shown
 - Disable unnecessary toolbars
 
-<figure>
-    <img alt="A screenshot of Visual Studio Code" src="/images/light-theme-editor.jpg" class="block">
-    <figcaption>No unnecessary fluff in sight, just code.</figcaption>
-</figure>
+<Figure src={editor} alt="A screenshot of Visual Studio Code">No unnecessary fluff in sight, just code.</Figure>
 
 Most of this comes from Caleb Porzio's (of Alpine.js fame) [Make VS Code Awesome](https://makevscodeawesome.com/), which I recommend checking out. Not all customizations were to my taste, but the few listed above make it much easier to focus on the code.
 
