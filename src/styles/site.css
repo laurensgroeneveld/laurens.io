@@ -6,3 +6,11 @@
 [x-cloak] {
     display: none !important;
 }
+
+.astro-code,
+.astro-code span {
+    @variant dark {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+    }
+}
