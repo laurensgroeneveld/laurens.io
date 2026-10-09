@@ -34,27 +34,38 @@ const navItems = [
 
     <link rel="alternate" href="/feed.xml" type="application/rss+xml" title={SITE_TITLE}>
     <link rel="me" type="text/html" href="https://twitter.com/laurensgroenev" />
+
+    <script is:inline>
+        function applyTheme() {
+            const theme = localStorage.theme ?? 'system';
+            const prefersDark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+
+            document.documentElement.classList.toggle('dark', prefersDark);
+        }
+
+        applyTheme();
+    </script>
 </head>
 <body class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200 pb-16">
     <div class="mb-8 bg-gray-200 dark:bg-gray-800">
-        <div class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between" x-data="{ showMobileNav: false }">
+        <div class="max-w-3xl mx-auto px-6 py-8 flex flex-wrap items-center justify-between">
             <a href="/" class="text-xl font-medium text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-indigo-600 to-blue-600 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">Laurens Groeneveld</a>
 
-            <svg class="md:hidden w-6 text-gray-600 cursor-pointer" x-bind:class="{'hidden': showMobileNav}" x-on:click="showMobileNav = true"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+            <button type="button" id="nav-toggle" class="peer group md:hidden text-gray-600 cursor-pointer" aria-expanded="false" aria-controls="site-nav">
+                <span class="sr-only">Toggle navigation</span>
+                <svg class="w-6 group-aria-expanded:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <svg class="w-6 hidden group-aria-expanded:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
 
-            <svg class="hidden w-6 text-gray-600 cursor-pointer" x-bind:class="{'flex md:hidden': showMobileNav, 'hidden': ! showMobileNav}" x-on:click="showMobileNav = false"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-
-            <nav class="hidden md:flex flex-wrap items-center w-screen md:w-auto pt-6 md:pt-0" x-bind:class="{'flex': showMobileNav, 'hidden': ! showMobileNav}" aria-label="Site navigation">
+            <nav id="site-nav" class="hidden md:flex peer-aria-expanded:flex flex-wrap items-center w-screen md:w-auto pt-6 md:pt-0" aria-label="Site navigation">
                 {navItems.map(({ href, label }) => {
                     const isCurrent = Astro.url.pathname === href;
                     return (
@@ -86,5 +97,13 @@ const navItems = [
             &copy; Laurens Groeneveld - Content and website licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer" class="underline">CC BY-SA 4.0</a>
         </div>
     </div>
+
+    <script>
+        const toggle = document.getElementById('nav-toggle')!;
+
+        toggle.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
+        });
+    </script>
 </body>
 </html>

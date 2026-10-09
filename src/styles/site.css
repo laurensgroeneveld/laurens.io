@@ -3,10 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-[x-cloak] {
-    display: none !important;
-}
-
 .astro-code,
 .astro-code span {
     @variant dark {
