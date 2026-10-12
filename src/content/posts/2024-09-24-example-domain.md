@@ -1,7 +1,6 @@
 ---
 title: Use a proper example domain
 description: Don't use @notarealemail.com for fake test email addresses
-date: 2024-09-24
 ---
 Quite often I need to put in a fake or test email address in a system. Either a local or staging environment where I load some test users or orders, or (as has unfortunately happened) some production environment where email is mandatory, but none is associated with the entity.
 

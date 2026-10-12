@@ -1,11 +1,32 @@
+import path from 'node:path';
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, type Loader } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const slugFromFilename = ({ entry }: { entry: string }) => entry.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.mdx?$/, '');
+const datePrefix = /^(\d{4}-\d{2}-\d{2})-/;
+
+function datedGlob(pattern: string, base: string): Loader {
+    const loader = glob({
+        pattern,
+        base,
+        generateId: ({ entry }) => entry.replace(datePrefix, '').replace(/\.mdx?$/, ''),
+    });
+
+    return {
+        ...loader,
+        load: (context) => loader.load({
+            ...context,
+            parseData: ({ data, filePath = '', ...rest }) => context.parseData({
+                ...rest,
+                filePath,
+                data: { ...data, date: path.basename(filePath).match(datePrefix)?.[1] },
+            }),
+        }),
+    };
+}
 
 const posts = defineCollection({
-    loader: glob({ pattern: '*.{md,mdx}', base: './src/content/posts', generateId: slugFromFilename }),
+    loader: datedGlob('*.{md,mdx}', './src/content/posts'),
     schema: z.object({
         title: z.string(),
         description: z.string().optional(),
@@ -14,7 +35,7 @@ const posts = defineCollection({
 });
 
 const learnings = defineCollection({
-    loader: glob({ pattern: '*.md', base: './src/content/learnings', generateId: slugFromFilename }),
+    loader: datedGlob('*.md', './src/content/learnings'),
     schema: z.object({
         title: z.string(),
         date: z.coerce.date(),

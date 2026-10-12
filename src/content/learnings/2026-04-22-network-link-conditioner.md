@@ -1,6 +1,5 @@
 ---
 title: Apple Network Link Conditioner
-date: 2026-04-22
 source: https://developer.apple.com/download/all/?q=hardware%20io
 ---
 

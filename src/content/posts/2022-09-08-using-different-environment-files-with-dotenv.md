@@ -1,7 +1,6 @@
 ---
 title: Using different files between environments with dotenv
 description: Using multiple environment files is discouraged but possible in the dotenv library
-date: 2022-09-08
 ---
 
 By default, the [dotenv](https://www.npmjs.com/package/dotenv) library is configured to only use one `.env` file in the root of the project. The readme warns against using multiple environment files, and at first glance this is not supported by the library. Luckily it is possible to change the used file by setting the `DOTENV_CONFIG_PATH` environment variable, and by doing this a different file _can_ be used.

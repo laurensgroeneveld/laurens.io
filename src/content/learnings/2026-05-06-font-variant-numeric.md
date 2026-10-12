@@ -1,6 +1,5 @@
 ---
 title: font-variant-numeric CSS property
-date: 2026-05-06
 source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-variant-numeric
 ---
 

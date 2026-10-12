@@ -1,7 +1,6 @@
 ---
 title: Block ads at home and on the go with Pi-hole and Tailscale
 description: Create a private mesh network with Tailscale to use your Pi-hole everywhere
-date: 2023-01-02
 ---
 
 I have recently begun using a [Pi-hole](https://pi-hole.net/). This nifty software is easily installed on a Raspberry Pi and once correctly configured in your router will block advertisements on a DNS level. This is much better than an adblocker, as the ads are not even loaded. A Pi-hole is also not detectable by websites. The only downside of course is that this only works at home. Enter [Tailscale](https://tailscale.com/), which enables you to create a private mesh network between your devices, with ability to use the same Pi-hole as a DNS server everywhere.
