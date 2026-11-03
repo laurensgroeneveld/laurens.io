@@ -1,0 +1,27 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={['sunset relative isolate overflow-hidden bg-linear-to-b from-paper via-sky to-dusk px-6 pt-20 pb-48 sm:pt-24 sm:pb-72', className]}>
+    <div
+        class="setting-sun moon absolute bottom-8 left-[8%] -z-10 size-28 rounded-full bg-sun sm:bottom-9 sm:left-[14%] sm:size-44 dark:bottom-12 sm:dark:bottom-16"
+        aria-hidden="true"
+    ></div>
+    <svg
+        class="absolute inset-x-0 -bottom-px -z-10 h-32 w-full sm:h-44"
+        viewBox="0 0 1440 240"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+    >
+        <path class="fill-hill-back" d="M0 70 C200 110 420 120 660 96 C900 72 1180 40 1440 78 V241 H0 Z" />
+        <path class="fill-hill-middle" d="M0 132 C260 104 520 112 780 140 C1020 166 1240 150 1440 124 V241 H0 Z" />
+        <path class="fill-hill-front" d="M0 190 C220 206 500 210 760 186 C1000 164 1240 172 1440 196 V241 H0 Z" />
+    </svg>
+    <div class="mx-auto max-w-2xl text-center">
+        <slot />
+    </div>
+</section>

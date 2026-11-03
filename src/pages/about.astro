@@ -1,31 +1,42 @@
 ---
+import { Image } from 'astro:assets';
 import Page from '@/layouts/Page.astro';
+import laurens from '@/assets/laurens.jpg';
 import { socials } from '@/socials';
 ---
 
 <Page title="About">
+    <Image
+        src={laurens}
+        alt="Portrait of Laurens Groeneveld"
+        width={384}
+        widths={[192, 384]}
+        sizes="(min-width: 40rem) 12rem, 8rem"
+        class="not-prose float-right mt-1 mb-4 ml-6 size-32 rounded-full object-cover sm:size-48"
+    />
+
     <p>Hi there! I'm Laurens, a web developer from the Netherlands. As one of the fabled full stack developers I work in both frontend and backend, although I like building frontends the most.</p>
 
     <p>On this site, you'll find things I share about my work, and possibly my other interests: when I'm not coding, I like reading sci-fi, and playing strategy games - both digital and physical.</p>
 
-    <div class="not-prose">
-        <h2 class="text-xl mb-2">
+    <div class="not-prose clear-both mt-10 rounded-3xl bg-sky p-6 sm:p-8">
+        <h2 class="mb-2 text-2xl font-bold tracking-tight text-brand">
             Contact
         </h2>
-        <p class="mb-4">
+        <p class="mb-5 text-slate-700 dark:text-slate-300">
             You can find me on other platforms, or send me an email.
         </p>
         {socials.map(({ href, text, Icon }) => {
             const isExternal = !href.startsWith('mailto:');
 
             return (
-                <p class="flex items-center mb-4 space-x-3">
-                    <Icon class="w-5 h-5 fill-gray-700 dark:fill-gray-200" />
+                <p class="mb-4 flex items-center space-x-3 last:mb-0">
+                    <Icon class="size-5 fill-slate-700 dark:fill-slate-300" />
                     <a
                         href={href}
                         target={isExternal ? '_blank' : undefined}
                         rel={isExternal ? 'noopener noreferrer me' : undefined}
-                        class="text-indigo-700 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-100"
+                        class="text-brand underline-offset-2 hover:text-brand-hover hover:underline"
                     >
                         {text}
                     </a>

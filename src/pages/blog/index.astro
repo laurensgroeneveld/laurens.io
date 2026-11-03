@@ -7,16 +7,15 @@ const title = 'Blog';
 ---
 
 <Base title={title}>
-    <header>
+    <header class="mb-10">
         <div class="flex items-center justify-between">
-            <h1 class="text-3xl tracking-tight">
+            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
                 {title}
             </h1>
-            <a href="/feed.xml" class="text-gray-400 hover:text-indigo-600 dark:text-gray-500 dark:hover:text-indigo-300" title="RSS feed">
-                <RssIcon class="h-5 w-5" />
+            <a href="/feed.xml" class="text-slate-400 hover:text-brand dark:text-slate-500" title="RSS feed">
+                <RssIcon class="size-5" />
             </a>
         </div>
-        <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
     </header>
 
     <PostList />
