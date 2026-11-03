@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 200 200">
+  <defs>
+    <clipPath id="fav-circle">
+      <circle cx="100" cy="100" r="100"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#fav-circle)">
+    <rect x="0" y="0" width="200" height="200" fill="#F3F9EE"/>
+    <circle cx="128" cy="66" r="30" fill="#F2B84B"/>
+    <path d="M0 128 C58 98 128 116 200 106 V200 H0 Z" fill="#5FA850"/>
+    <path d="M0 166 C70 142 140 164 200 150 V200 H0 Z" fill="#2F6B3A"/>
+  </g>
+</svg>

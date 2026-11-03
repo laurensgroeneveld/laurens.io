@@ -4,24 +4,27 @@ import Base from '@/layouts/Base.astro';
 import LinkIcon from 'heroicons/16/solid/link.svg';
 import Prose from '@/components/Prose.astro';
 import SocialLinks from '@/components/SocialLinks.astro';
+import Sunset from '@/components/Sunset.astro';
 import { formatDate } from '@/utils/date';
 
-type Props = CollectionEntry<'posts'>['data'] & CollectionEntry<'learnings'>['data'];
+type Props = CollectionEntry<'posts'>['data'] & CollectionEntry<'learnings'>['data'] & {
+    showAbout?: boolean;
+};
 
-const { title, description, date, source } = Astro.props;
+const { title, description, date, source, showAbout = false } = Astro.props;
 ---
 
 <Base title={title} description={description}>
     <article>
-        <div class="text-sm tracking-wide text-gray-600 dark:text-gray-400 mb-1">
-            {formatDate(date)}
-        </div>
+        <header class="mb-8">
+            <div class="mb-2 text-sm tracking-wide text-slate-500 dark:text-slate-400">
+                {formatDate(date)}
+            </div>
 
-        <h1 class="text-3xl tracking-tight">
-            {title}
-        </h1>
-
-        <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
+            <h1 class="text-4xl font-bold tracking-tight text-balance sm:text-5xl">
+                {title}
+            </h1>
+        </header>
 
         <Prose>
             <slot />
@@ -29,20 +32,29 @@ const { title, description, date, source } = Astro.props;
     </article>
 
     {source && (
-        <a href={source} class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-50 flex items-center gap-1 underline mt-2" target="_blank">
+        <a href={source} class="mt-4 flex items-center gap-1 text-brand underline underline-offset-2 hover:text-brand-hover" target="_blank">
             <LinkIcon class="size-4" />
             Source
         </a>
     )}
 
-    <footer class="block p-6 rounded-md shadow-md bg-white dark:bg-gray-800 mt-10">
-        <h2 class="text-lg mb-2 text-purple-700 dark:text-purple-400">About Me</h2>
-        <p class="text-gray-700 dark:text-gray-200 mb-4">
-            I'm Laurens, a web developer from the Netherlands. On this site you'll find things I share about my work. Plus the occasional random historical fact.
-            <a href="/about/" class="text-sm underline ml-2">More</a>
-        </p>
-        <span class="text-gray-600 dark:text-gray-300">
-            <SocialLinks />
-        </span>
-    </footer>
+    {showAbout && (
+        <Sunset slot="sunset">
+            <h2 class="mb-3 text-2xl font-bold tracking-tight text-brand sm:text-3xl">About me</h2>
+            <p class="mb-5 text-lg text-pretty text-slate-700 dark:text-slate-200">
+                I'm Laurens, a web developer from the Netherlands. On this site you'll find things I share about my work. Plus the occasional random historical fact.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
+                <a
+                    href="/about/"
+                    class="rounded-full bg-brand px-4 py-1.5 text-sm font-semibold text-on-brand transition-colors hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                    Read more
+                </a>
+                <span class="text-slate-700 dark:text-slate-200">
+                    <SocialLinks />
+                </span>
+            </div>
+        </Sunset>
+    )}
 </Base>

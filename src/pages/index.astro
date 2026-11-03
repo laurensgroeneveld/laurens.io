@@ -1,23 +1,43 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '@/layouts/Base.astro';
+import laurens from '@/assets/laurens.jpg';
 import PostList from '@/components/PostList.astro';
 import SocialLinks from '@/components/SocialLinks.astro';
 ---
 
 <Base title="Home">
-    <div slot="subnav" class="max-w-3xl mx-auto px-6 pb-16 pt-8">
-        <h1 class="text-3xl mb-6">Hi, I'm Laurens 👋</h1>
-        <p class="text-xl mb-4">
-            I'm a web developer from the Netherlands. On this site you'll mainly find things I share about my work. Plus the occasional random historical fact.
-        </p>
-        <p class="mb-8">
-            <a href="/about/" class="hover:text-indigo-700 dark:hover:text-indigo-300 underline">More about me</a>
-        </p>
-        <SocialLinks />
+    <div slot="hero" class="mt-12 grid items-center gap-8 sm:mt-20 md:grid-cols-[minmax(0,1fr)_auto] md:gap-12">
+        <div>
+            <h1 class="text-[clamp(2.5rem,8vw,3.75rem)] leading-[1.02] font-bold tracking-tight">Hi, I'm Laurens 👋</h1>
+            <p class="mt-6 max-w-2xl text-lg text-slate-700 sm:text-xl dark:text-slate-300">
+                I'm a web developer from the Netherlands. On this site you'll mainly find things I share about my work. Plus the occasional random historical fact.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-6">
+                <a
+                    href="/about/"
+                    class="rounded-full bg-brand px-6 py-3 font-semibold text-on-brand transition-colors hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                    More about me
+                </a>
+                <span class="text-slate-600 dark:text-slate-300">
+                    <SocialLinks />
+                </span>
+            </div>
+        </div>
+
+        <Image
+            src={laurens}
+            alt="Portrait of Laurens Groeneveld"
+            width={384}
+            widths={[224, 384]}
+            sizes="(min-width: 48rem) 12rem, 7rem"
+            class="order-first size-28 rounded-full object-cover md:order-none md:size-48"
+            loading="eager"
+        />
     </div>
 
-    <h2 class="text-2xl text-gray-800 dark:text-gray-200">Latest posts</h2>
-    <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
+    <h2 class="mb-8 text-3xl font-bold tracking-tight">Latest posts</h2>
 
     <PostList />
 </Base>

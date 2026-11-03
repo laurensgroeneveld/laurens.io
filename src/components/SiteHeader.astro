@@ -1,0 +1,98 @@
+---
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import Squiggle from '@/components/Squiggle.astro';
+
+interface Props {
+    hero?: boolean;
+}
+
+const { hero = false } = Astro.props;
+
+const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/blog/', label: 'Blog' },
+    { href: '/til/', label: 'TIL' },
+    { href: '/about/', label: 'About' },
+];
+
+const stars = [
+    [90, 60, 1.5], [230, 150, 1], [380, 40, 1.2], [520, 120, 1.6], [660, 30, 1], [760, 170, 1.3],
+    [880, 80, 1], [990, 200, 1.4], [1110, 50, 1.1], [1240, 140, 1], [1350, 260, 1.5], [160, 280, 1.1],
+    [440, 250, 1], [700, 290, 1.2], [1020, 320, 1], [1300, 360, 1.2],
+];
+---
+
+<header class="relative isolate z-10 bg-sky">
+    <div class="absolute inset-x-0 top-0 -bottom-px -z-10 overflow-hidden" aria-hidden="true">
+        <svg
+            class="absolute inset-0 hidden size-full fill-sun/70 dark:block"
+            viewBox="0 0 1440 400"
+            preserveAspectRatio="xMidYMin slice"
+        >
+            {stars.map(([cx, cy, r]) => <circle cx={cx} cy={cy} r={r} />)}
+        </svg>
+
+        <div
+            class:list={[
+                'moon absolute rounded-full bg-sun dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]',
+                hero
+                    ? '-top-10 -right-10 size-20 lg:-top-12 lg:-right-12 lg:size-40 xl:-top-20 xl:-right-20 xl:size-72'
+                    : '-top-10 -right-10 size-20 lg:-top-20 lg:-right-20 lg:size-40',
+            ]}
+        ></div>
+
+        <svg
+            class:list={[
+                'absolute inset-x-0 bottom-0 w-full',
+                hero ? 'h-24 sm:h-40 lg:h-44' : 'h-12 sm:h-20',
+            ]}
+            viewBox="0 0 1440 240"
+            preserveAspectRatio="none"
+        >
+            <path class="fill-hill-back" d="M0 96 C240 40 480 48 720 84 C960 120 1200 72 1440 60 V240 H0 Z"></path>
+            <path class="fill-hill-middle" d="M0 150 C200 100 460 110 700 140 C940 170 1180 116 1440 108 V240 H0 Z"></path>
+            <path class="fill-hill-front" d="M0 196 C260 160 520 176 760 196 C1000 216 1220 172 1440 168 V240 H0 Z"></path>
+            <path class="fill-paper" d="M0 226 C320 206 640 214 940 228 C1160 238 1320 220 1440 214 V241 H0 Z"></path>
+        </svg>
+    </div>
+
+    <div class:list={['mx-auto max-w-3xl px-6 pt-8', hero ? 'pb-28 sm:pb-40 lg:pb-44' : 'pb-16 sm:pb-24']}>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a
+                href="/"
+                class="mr-auto rounded-sm font-display text-2xl font-bold tracking-tight text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand sm:text-[1.75rem]"
+            >
+                <span class="relative inline-block">
+                    Laurens Groeneveld
+                    {hero && <Squiggle class="absolute inset-x-0 -bottom-2 h-2.5 w-full max-sm:hidden" />}
+                </span>
+            </a>
+
+            <div class="flex basis-full items-center gap-x-5 sm:basis-auto">
+                <nav class="relative flex gap-x-5" aria-label="Site navigation">
+                    {navItems.map(({ href, label }) => {
+                        const isCurrent = Astro.url.pathname === href;
+                        return (
+                            <a
+                                href={href}
+                                class:list={[
+                                    'hover:text-brand',
+                                    isCurrent ? 'font-semibold text-brand' : 'text-slate-600 dark:text-slate-300',
+                                ]}
+                                aria-current={isCurrent ? 'page' : undefined}
+                            >
+                                {label}
+                            </a>
+                        );
+                    })}
+                </nav>
+
+                <div class="sm:border-l sm:border-slate-300 sm:pl-5 dark:sm:border-slate-600">
+                    <ThemeToggle />
+                </div>
+            </div>
+        </div>
+
+        <slot />
+    </div>
+</header>

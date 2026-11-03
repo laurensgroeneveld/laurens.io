@@ -1,0 +1,25 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const strokes = [
+    { class: 'stroke-hill-back dark:stroke-[#4f7d4a]', d: 'M0 4 C25 0 55 7 100 3' },
+    { class: 'stroke-hill-middle dark:stroke-[#6fa95a]', d: 'M0 7.5 C30 3.5 60 10 100 6.5' },
+    { class: 'stroke-hill-front dark:stroke-brand', d: 'M0 11 C35 7.5 65 12 100 9.5' },
+];
+---
+
+<svg class={className} viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
+    {strokes.map((stroke) => (
+        <path
+            class={stroke.class}
+            d={stroke.d}
+            fill="none"
+            stroke-width="2.5"
+            vector-effect="non-scaling-stroke"
+        />
+    ))}
+</svg>

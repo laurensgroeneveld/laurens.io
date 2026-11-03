@@ -12,14 +12,12 @@ const { title, subtitle, description } = Astro.props;
 ---
 
 <Base title={title} description={description}>
-    <header>
-        <h1 class="text-3xl tracking-tight">
+    <header class="mb-10">
+        <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
             {title}
         </h1>
 
-        {subtitle && <div class="mt-1 text-gray-700 text-lg">{subtitle}</div>}
-
-        <div class="w-8 inline-block border-b-4 border-indigo-700 dark:border-indigo-500 pb-4 mb-4"></div>
+        {subtitle && <div class="mt-2 text-lg text-slate-600 dark:text-slate-400">{subtitle}</div>}
     </header>
 
     <Prose>

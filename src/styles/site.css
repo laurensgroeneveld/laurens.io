@@ -3,10 +3,79 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+    --font-sans: var(--font-geist);
+    --font-display: var(--font-bricolage);
+
+    --color-paper: #ffffff;
+    --color-sky: #f3f9ee;
+    --color-sun: #f2b84b;
+    --color-hill-back: #a9d37e;
+    --color-hill-middle: #5fa850;
+    --color-hill-front: #2f6b3a;
+    --color-hill-deep: #1f4a28;
+    --color-brand: #2f6b3a;
+    --color-brand-hover: #1f4a28;
+    --color-on-brand: #ffffff;
+    --color-dusk: #fce8cc;
+}
+
+@layer base {
+    .dark {
+        --color-paper: #0d1714;
+        --color-sky: #121f2b;
+        --color-sun: #ece6c8;
+        --color-hill-back: #37593f;
+        --color-hill-middle: #254530;
+        --color-hill-front: #163020;
+        --color-hill-deep: #0c1f16;
+        --color-brand: #a9d37e;
+        --color-brand-hover: #c4e3a3;
+        --color-on-brand: #0d1714;
+        --color-dusk: #2a2a48;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: var(--font-display);
+    }
+}
+
+@utility moon {
+    @variant dark {
+        mask-image: radial-gradient(circle at 68% 32%, transparent 58%, #000 59%);
+    }
+}
+
 .astro-code,
 .astro-code span {
     @variant dark {
         color: var(--shiki-dark) !important;
         background-color: var(--shiki-dark-bg) !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .sunset {
+            view-timeline-name: --sunset;
+        }
+
+        .setting-sun {
+            animation: sun-set linear both;
+            animation-timeline: --sunset;
+            animation-range: entry 0% entry 100%;
+        }
+    }
+}
+
+@keyframes sun-set {
+    from {
+        transform: translateY(-40%);
+    }
+
+    to {
+        transform: translateY(0);
     }
 }
