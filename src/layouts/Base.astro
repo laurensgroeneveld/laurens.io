@@ -10,6 +10,8 @@ interface Props {
 }
 
 const { title, description = SITE_DESCRIPTION } = Astro.props;
+const fullTitle = `${title} — ${SITE_TITLE}`;
+const ogImageURL = new URL('/og-image.png', Astro.site);
 const hasHero = Astro.slots.has('hero');
 const sunset = Astro.slots.has('sunset') ? await Astro.slots.render('sunset') : '';
 const hasSunset = sunset.trim() !== '';
@@ -26,7 +28,19 @@ const hasSunset = sunset.trim() !== '';
     <meta name="description" content={description}>
     <meta name="author" content="Laurens Groeneveld" />
 
-    <title>{title} — {SITE_TITLE}</title>
+    <title>{fullTitle}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Laurens Groeneveld" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <Font cssVariable="--font-geist" preload />
