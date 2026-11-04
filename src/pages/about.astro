@@ -30,13 +30,13 @@ import { socials } from '@/socials';
             const isExternal = !href.startsWith('mailto:');
 
             return (
-                <p class="mb-4 flex items-center space-x-3 last:mb-0">
-                    <Icon class="size-5 fill-slate-700 dark:fill-slate-300" />
+                <p class="mb-4 flex items-center gap-x-3 last:mb-0">
+                    <Icon class="size-5 shrink-0 fill-slate-700 dark:fill-slate-300" />
                     <a
                         href={href}
                         target={isExternal ? '_blank' : undefined}
                         rel={isExternal ? 'noopener noreferrer me' : undefined}
-                        class="text-brand underline-offset-2 hover:text-brand-hover hover:underline"
+                        class="min-w-0 truncate text-brand underline-offset-2 hover:text-brand-hover hover:underline"
                     >
                         {text}
                     </a>
