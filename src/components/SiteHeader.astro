@@ -25,7 +25,7 @@ const stars = [
 <header class="relative isolate z-10 bg-sky">
     <div class="absolute inset-x-0 top-0 -bottom-px -z-10 overflow-hidden" aria-hidden="true">
         <svg
-            class="absolute inset-0 hidden size-full fill-sun/70 dark:block"
+            class:list={['absolute inset-0 hidden size-full fill-sun/70 dark:block', { 'max-sm:invisible': hero }]}
             viewBox="0 0 1440 400"
             preserveAspectRatio="xMidYMin slice"
         >
@@ -34,7 +34,7 @@ const stars = [
 
         <div
             class:list={[
-                'moon absolute rounded-full bg-sun dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]',
+                'absolute rounded-full bg-sun dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]',
                 hero
                     ? '-top-10 -right-10 size-20 lg:-top-12 lg:-right-12 lg:size-40 xl:-top-20 xl:-right-20 xl:size-72'
                     : '-top-10 -right-10 size-20 lg:-top-20 lg:-right-20 lg:size-40',

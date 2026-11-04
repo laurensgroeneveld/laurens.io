@@ -42,12 +42,6 @@
     }
 }
 
-@utility moon {
-    @variant dark {
-        mask-image: radial-gradient(circle at 68% 32%, transparent 58%, #000 59%);
-    }
-}
-
 .astro-code,
 .astro-code span {
     @variant dark {
