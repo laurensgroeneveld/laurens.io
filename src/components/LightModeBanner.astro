@@ -1,0 +1,21 @@
+<div class="not-prose mb-8 hidden items-center justify-between gap-4 rounded-2xl bg-brand py-3 pr-3 pl-5 text-on-brand dark:flex">
+    <p class="font-medium">Best viewed in light mode 😉</p>
+    <button
+        type="button"
+        data-switch-to-light
+        class="shrink-0 cursor-pointer rounded-full bg-on-brand px-4 py-1.5 text-sm font-semibold text-brand transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-brand"
+    >
+        Switch
+    </button>
+</div>
+
+<script>
+    declare function applyTheme(): void;
+
+    document.querySelectorAll('[data-switch-to-light]').forEach((button) => {
+        button.addEventListener('click', () => {
+            localStorage.theme = 'light';
+            applyTheme();
+        });
+    });
+</script>

@@ -76,6 +76,10 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
     const items = menu.querySelectorAll<HTMLElement>('[data-theme]');
 
     function setOpen(open: boolean) {
+        if (open) {
+            markCurrent();
+        }
+
         menu.inert = !open;
         button.setAttribute('aria-expanded', String(open));
     }
