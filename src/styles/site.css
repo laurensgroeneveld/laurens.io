@@ -18,6 +18,8 @@
     --color-brand-hover: #1f4a28;
     --color-on-brand: #ffffff;
     --color-dusk: #fce8cc;
+    --color-selection: #a9d37e;
+    --color-on-selection: #1f4a28;
 }
 
 @layer base {
@@ -33,12 +35,19 @@
         --color-brand-hover: #c4e3a3;
         --color-on-brand: #0d1714;
         --color-dusk: #2a2a48;
+        --color-selection: #4f7d4a;
+        --color-on-selection: #ffffff;
     }
 
     h1,
     h2,
     h3 {
         font-family: var(--font-display);
+    }
+
+    ::selection {
+        background-color: var(--color-selection);
+        color: var(--color-on-selection);
     }
 }
 
