@@ -11,8 +11,8 @@ const rendered = await Promise.all(
 );
 ---
 
-<Page title="TIL" subtitle="💡 Quick notes on things I learned today">
-    <div class="not-prose space-y-8">
+<Page title="TIL" subtitle="💡 Quick notes on things I learned today" prose={false}>
+    <div class="space-y-8">
         {rendered.map(({ learning, Content }) => (
             <div>
                 <a href={`/til/${learning.id}/`} class="text-sm tracking-wide text-slate-500 hover:text-brand dark:text-slate-400">
