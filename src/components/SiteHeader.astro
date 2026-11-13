@@ -32,15 +32,6 @@ const stars = [
             {stars.map(([cx, cy, r]) => <circle cx={cx} cy={cy} r={r} />)}
         </svg>
 
-        <div
-            class:list={[
-                'absolute rounded-full bg-sun dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]',
-                hero
-                    ? '-top-10 -right-10 size-20 lg:-top-12 lg:-right-12 lg:size-40 xl:-top-20 xl:-right-20 xl:size-72'
-                    : '-top-10 -right-10 size-20 lg:-top-20 lg:-right-20 lg:size-40',
-            ]}
-        ></div>
-
         <svg
             class:list={[
                 'absolute inset-x-0 bottom-0 w-full',
@@ -54,6 +45,18 @@ const stars = [
             <path class="fill-hill-front" d="M0 196 C260 160 520 176 760 196 C1000 216 1220 172 1440 168 V240 H0 Z"></path>
             <path class="fill-paper" d="M0 226 C320 206 640 214 940 228 C1160 238 1320 220 1440 214 V241 H0 Z"></path>
         </svg>
+    </div>
+
+    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+            data-theme-switch
+            class:list={[
+                'pointer-events-auto absolute cursor-pointer rounded-full bg-sun dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]',
+                hero
+                    ? '-top-10 -right-10 size-20 lg:-top-12 lg:-right-12 lg:size-40 xl:-top-20 xl:-right-20 xl:size-72'
+                    : '-top-10 -right-10 size-20 lg:-top-20 lg:-right-20 lg:size-40',
+            ]}
+        ></div>
     </div>
 
     <div class:list={['mx-auto max-w-3xl px-6 pt-8', hero ? 'pb-28 sm:pb-40 lg:pb-44' : 'pb-16 sm:pb-24']}>

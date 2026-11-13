@@ -1,5 +1,6 @@
 ---
-import ComputerIcon from 'heroicons/20/solid/computer-desktop.svg';
+import SystemThemeSolidIcon from '@/assets/icons/system-theme-20.svg';
+import SystemThemeIcon from '@/assets/icons/system-theme-24.svg';
 import MoonSolidIcon from 'heroicons/20/solid/moon.svg';
 import SunSolidIcon from 'heroicons/20/solid/sun.svg';
 import MoonIcon from 'heroicons/24/outline/moon.svg';
@@ -18,8 +19,9 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
                 aria-controls="theme-menu"
             >
                 <span class="sr-only">Open options</span>
-                <MoonIcon class="h-6 w-6 hidden dark:block" />
-                <SunIcon class="h-6 w-6 dark:hidden" />
+                <SunIcon class="h-6 w-6 hidden in-data-[theme=light]:block" />
+                <MoonIcon class="h-6 w-6 hidden in-data-[theme=dark]:block" />
+                <SystemThemeIcon class="h-6 w-6 hidden in-data-[theme=system]:block" />
             </button>
         </div>
 
@@ -32,9 +34,9 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
             aria-labelledby="menu-button"
             tabindex="-1"
         >
-            <div class="py-1" role="none">
+            <div class="p-1" role="none">
             <button
-                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-4 py-2 text-sm flex items-center cursor-pointer hover:bg-sky"
+                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-3 py-2 rounded-lg text-sm flex items-center cursor-pointer hover:bg-sky"
                 role="menuitemradio"
                 aria-checked="false"
                 tabindex="-1"
@@ -44,7 +46,7 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
                 Light
             </button>
             <button
-                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-4 py-2 text-sm flex items-center cursor-pointer hover:bg-sky"
+                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-3 py-2 rounded-lg text-sm flex items-center cursor-pointer hover:bg-sky"
                 role="menuitemradio"
                 aria-checked="false"
                 tabindex="-1"
@@ -54,13 +56,13 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
                 Dark
             </button>
             <button
-                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-4 py-2 text-sm flex items-center cursor-pointer hover:bg-sky"
+                class="w-full text-slate-700 dark:text-slate-200 aria-checked:text-brand aria-checked:font-semibold px-3 py-2 rounded-lg text-sm flex items-center cursor-pointer hover:bg-sky"
                 role="menuitemradio"
                 aria-checked="false"
                 tabindex="-1"
                 data-theme="system"
             >
-                <ComputerIcon class="h-5 w-5 mr-2" />
+                <SystemThemeSolidIcon class="h-5 w-5 mr-2" />
                 System
             </button>
             </div>
@@ -112,7 +114,19 @@ import SunIcon from 'heroicons/24/outline/sun.svg';
         });
     });
 
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyTheme);
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)');
+
+    prefersDark.addEventListener('change', applyTheme);
+
+    document.querySelectorAll('[data-theme-switch]').forEach((sun) =>
+        sun.addEventListener('click', () => {
+            const toDark = !document.documentElement.classList.contains('dark');
+
+            localStorage.theme = toDark === prefersDark.matches ? 'system' : toDark ? 'dark' : 'light';
+            applyTheme();
+            markCurrent();
+        }),
+    );
 
     markCurrent();
 </script>

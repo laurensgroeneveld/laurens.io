@@ -8,11 +8,12 @@ const { class: className } = Astro.props;
 
 <section class:list={['sunset relative isolate overflow-hidden bg-linear-to-b from-paper via-sky to-dusk px-6 pt-20 pb-48 sm:pt-24 sm:pb-72', className]}>
     <div
-        class="setting-sun absolute bottom-8 left-[8%] -z-10 size-28 rounded-full bg-sun sm:bottom-9 sm:left-[14%] sm:size-44 dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]"
+        data-theme-switch
+        class="setting-sun absolute cursor-pointer bottom-8 left-[8%] -z-10 size-28 rounded-full bg-sun sm:bottom-9 sm:left-[14%] sm:size-44 dark:shadow-[0_0_60px_8px_--theme(--color-sun/15%)]"
         aria-hidden="true"
     ></div>
     <svg
-        class="absolute inset-x-0 -bottom-px -z-10 h-32 w-full sm:h-44"
+        class="pointer-events-none absolute inset-x-0 -bottom-px -z-10 h-32 w-full *:pointer-events-auto sm:h-44"
         viewBox="0 0 1440 240"
         preserveAspectRatio="none"
         aria-hidden="true"
